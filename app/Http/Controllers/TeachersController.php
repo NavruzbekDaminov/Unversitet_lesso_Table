@@ -80,6 +80,8 @@ class TeachersController extends Controller
      */
     public function edit($id)
     {
+        $id = Teacher::findOrfail($id);
+
         return view('teachers.edit', [
             'teacher' => $id
         ]);
@@ -94,6 +96,8 @@ class TeachersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $id = Teacher::findOrfail($id);
+
         $data = $request -> validate([
             'T_Lastname' => 'bail|required|min:3',
             'T_Firstname' => 'required|min:3'
